@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"go/ast"
 	"go/types"
 	"log"
@@ -51,7 +52,7 @@ func (v *visitor) Visit(node ast.Node) ast.Visitor {
 	switch stmt := node.(type) {
 	case *ast.RangeStmt:
 		if isMap(v.pkg.TypeOf(stmt.X)) {
-			log.Println("Map at", v.program.Fset.Position(node.Pos()))
+			fmt.Println(v.program.Fset.Position(node.Pos()))
 		}
 	default:
 	}
