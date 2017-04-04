@@ -43,18 +43,11 @@ type visitor struct {
 	pkg     *loader.PackageInfo
 }
 
-func isMap(t types.Type) bool {
-	_, ok := t.(*types.Map)
-	return ok
-}
-
 func (v *visitor) Visit(node ast.Node) ast.Visitor {
-	switch stmt := node.(type) {
-	case *ast.RangeStmt:
-		if isMap(v.pkg.TypeOf(stmt.X)) {
+	if stmt, isRange := node.(*ast.RangeStmt); isRange {
+		if _, isMap := v.pkg.TypeOf(stmt.X).(*types.Map); isMap {
 			fmt.Println(v.program.Fset.Position(node.Pos()))
 		}
-	default:
 	}
 	return v
 }
