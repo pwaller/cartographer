@@ -1,6 +1,6 @@
 # Cartographer points you at the maps
 
-In particular, loops over maps which may cause your program to be non-deterministic.
+In particular, cartographer lists all source locations in a package which are loops over maps. If you're not careful, these may cause your program to be non-deterministic.
 
 # Example of use
 
@@ -22,6 +22,8 @@ $ cartographer github.com/pwaller/cartographer/example
 3-clause BSD-style license.
 
 ## Trophies
+
+(Please submit more if you have any! :)
 
 * [c-for-go#27](https://github.com/xlab/c-for-go/pull/27)
 
